@@ -1,0 +1,5 @@
+#!/bin/sh
+
+now=$(date +"%s_%Y-%m-%d")
+/usr/bin/mysqldump -h ${MYSQL_HOST} -u ${MYSQL_USER} -p${MYSQL_PASSWORD} --all-databases > "/mysqldump/db_${now}.sql"
+find /mysqldump -mtime +14 -exec rm {} \;
